@@ -1,7 +1,7 @@
 /* src/styles/MainContent.css */
 .main-content {
   margin-left: 220px;
-  padding: 20px 30px;
+  padding: 20px 30px 80px 30px; /* Added padding-bottom to account for the widget */
   flex: 1;
   overflow-y: auto;
   background: #000000;

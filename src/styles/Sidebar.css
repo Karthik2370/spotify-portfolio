@@ -2,7 +2,7 @@
 .sidebar {
   width: 200px;
   background: #000000;
-  padding: 20px; /* Reverted to original padding */
+  padding: 20px;
   position: fixed;
   height: 100vh;
   overflow-y: auto;
@@ -15,6 +15,46 @@
 
 .sidebar::-webkit-scrollbar {
   display: none;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.navigation li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.navigation li:hover {
+  background-color: #1DB954;
+  color: #000000;
+  transform: translateX(5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.navigation li i {
+  font-size: 16px;
+  color: #1DB954;
+  transition: color 0.3s ease;
+}
+
+.navigation li:hover i {
+  color: #000000;
+}
+
+.divider {
+  height: 1px;
+  background-color: #333333;
+  margin: 10px 0;
 }
 
 .library h3,
@@ -74,11 +114,11 @@
 
 .profile {
   margin-top: auto;
-  margin-bottom: 30px; /* Added margin-bottom to create space below */
+  margin-bottom: 30px;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 10px; /* Consistent padding with .library li and .connect li */
+  padding: 8px 10px;
   color: white;
   cursor: pointer;
 }
@@ -105,6 +145,6 @@
   }
 
   .profile {
-    margin-bottom: 20px; /* Adjusted margin for mobile */
+    margin-bottom: 20px;
   }
 }

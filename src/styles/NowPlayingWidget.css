@@ -1,0 +1,99 @@
+/* src/styles/NowPlayingWidget.css */
+.now-playing-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #181818; /* Spotify dark background */
+  border-radius: 8px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 250px;
+}
+
+.now-playing-widget:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.widget-image {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #1DB954 0%, #000000 100%); /* Spotify green gradient */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.widget-details {
+  flex: 1;
+  color: white;
+}
+
+.widget-details h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  color: #1DB954; /* Spotify green for the title */
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #535353; /* Dark gray background for the progress bar */
+  border-radius: 2px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 75%; /* Changed from 50% to 75% */
+  height: 100%;
+  background-color: #1DB954; /* Spotify green for the progress */
+  transition: width 0.3s ease;
+}
+
+.widget-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.widget-controls i {
+  font-size: 14px;
+  color: #1DB954;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.widget-controls i:hover {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .now-playing-widget {
+    bottom: 15px;
+    right: 15px;
+    padding: 8px 12px;
+    max-width: 200px;
+  }
+
+  .widget-image {
+    width: 30px;
+    height: 30px;
+  }
+
+  .widget-details h4 {
+    font-size: 12px;
+  }
+
+  .widget-controls i {
+    font-size: 12px;
+  }
+}
