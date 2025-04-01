@@ -1,16 +1,32 @@
 // src/App.jsx
-import React from 'react';
-import Sidebar from './components/Sidebar';
+import React, { useRef } from 'react';
 import MainContent from './components/MainContent';
-import Player from './components/Player';
+import Sidebar from './components/Sidebar';
 import './App.css';
 
 function App() {
+  const aboutMeRef = useRef(null);
+  const educationRef = useRef(null);
+  const experienceRef = useRef(null);
+  const projectsRef = useRef(null);
+  const certificationsRef = useRef(null);
+
   return (
     <div className="app">
-      <Sidebar />
-      <MainContent />
-      <Player />
+      <Sidebar
+        aboutMeRef={aboutMeRef}
+        educationRef={educationRef}
+        experienceRef={experienceRef}
+        projectsRef={projectsRef}
+        certificationsRef={certificationsRef}
+      />
+      <MainContent
+        aboutMeRef={aboutMeRef}
+        educationRef={educationRef}
+        experienceRef={experienceRef}
+        projectsRef={projectsRef}
+        certificationsRef={certificationsRef}
+      />
     </div>
   );
 }
