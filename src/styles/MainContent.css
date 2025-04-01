@@ -4,20 +4,18 @@
   padding: 20px 30px;
   flex: 1;
   overflow-y: auto;
-  background: #000000; /* Black background */
-  padding-bottom: 80px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  background: #000000;
+  min-height: 100vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.main-content::-webkit-scrollbar {
+  display: none;
 }
 
 section {
   margin-bottom: 30px;
-}
-
-section h2 {
-  font-size: 20px;
-  font-weight: 700;
-  color: white; /* White text */
-  margin-bottom: 15px;
 }
 
 /* About Me Section */
@@ -29,78 +27,184 @@ section h2 {
   display: flex;
   align-items: center;
   gap: 20px;
-  background: linear-gradient(180deg, #1DB954 0%, #000000 100%); /* Improved gradient */
+  background: linear-gradient(180deg, #1DB954 0%, #000000 100%);
   padding: 20px;
   border-radius: 8px;
-  border: 1px solid #1DB954; /* Green border */
+  transition: transform 0.3s ease;
+}
+
+.about-header:hover {
+  transform: scale(1.02);
 }
 
 .about-image {
   width: 150px;
   height: 150px;
-  background: linear-gradient(135deg, #1DB954 0%, #000000 100%); /* Adjusted gradient */
+  background: linear-gradient(135deg, #1DB954 0%, #000000 100%);
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.about-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .about-details h1 {
   font-size: 32px;
   font-weight: 700;
   color: white;
-  margin: 0 0 10px;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .about-details p {
   font-size: 14px;
-  color: white; /* White text */
-  margin: 5px 0;
+  color: white;
+  margin: 0;
+  line-height: 1.5;
 }
 
-/* Education Section (Tour Dates Style) */
-.education .tour-dates {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.tour-item {
+/* Education and Leadership Section (Book View) */
+.education-leadership .book-view {
   display: flex;
   gap: 20px;
+  background: none;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.book-left,
+.book-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-left h2,
+.book-right h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.education-list,
+.leadership-list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.education-list {
+  gap: 30px; /* Increased gap to stretch Education items */
+}
+
+.leadership-list {
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.education-item,
+.leadership-item {
+  display: flex;
+  gap: 15px;
   padding: 10px;
-  background-color: #181818;
+  background-color: #282828;
   border-radius: 6px;
   transition: all 0.3s ease;
 }
 
-.tour-item:hover {
-  background-color: #282828;
+.education-item:hover,
+.leadership-item:hover {
+  background-color: #333333;
   transform: scale(1.02);
 }
 
-.tour-date {
+.education-date,
+.leadership-date {
   font-size: 12px;
-  color: #1DB954; /* Green text */
+  color: white;
   font-weight: 700;
-  width: 120px;
+  background: linear-gradient(135deg, #1DB954 0%, #333333 100%);
+  padding: 8px 10px;
+  border-radius: 8px;
+  width: 60px; /* Fixed width */
+  min-width: 60px; /* Ensure it doesn't shrink */
+  max-width: 60px; /* Ensure it doesn't grow */
+  box-sizing: border-box; /* Include padding in width */
+  text-align: center;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
 }
 
-.tour-info h3 {
+.education-date:hover,
+.leadership-date:hover {
+  transform: scale(1.1);
+}
+
+.education-info h3,
+.leadership-info h3 {
   font-size: 16px;
   font-weight: 700;
   color: white;
   margin: 0 0 5px;
+  line-height: 1.3;
 }
 
-.tour-info p {
+.education-info p,
+.leadership-info p {
   font-size: 12px;
-  color: white; /* White text */
+  color: white;
   margin: 2px 0;
+  line-height: 1.4;
 }
 
 /* Playlist Sections */
+.section-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+  position: relative;
+}
+
+.section-heading::before,
+.section-heading::after {
+  content: '';
+  width: 50px;
+  height: 2px;
+  background: #1DB954;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.section-heading::before {
+  left: 20%;
+}
+
+.section-heading::after {
+  right: 20%;
+}
+
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
@@ -127,17 +231,23 @@ section h2 {
     font-size: 12px;
   }
 
-  .tour-item {
+  .education-leadership .book-view {
     flex-direction: column;
-    gap: 10px;
   }
 
-  .tour-date {
-    width: auto;
+  .leadership-list {
+    justify-content: flex-start;
   }
 
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
+    gap: 15px;
+  }
+
+  .section-heading::before {
+    left: 10%;
+  }
+
+  .section-heading::after {
+    right: 10%;
   }
 }
