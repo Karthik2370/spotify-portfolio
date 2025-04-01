@@ -1,9 +1,9 @@
 // src/components/MainContent.jsx
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PlaylistCard from './PlaylistCard';
 import '../styles/MainContent.css';
 
-function MainContent() {
+function MainContent({ aboutMeRef, educationRef, experienceRef, projectsRef, certificationsRef }) {
   const [expandedSection, setExpandedSection] = useState(null);
 
   const toggleSection = (section) => {
@@ -12,50 +12,76 @@ function MainContent() {
 
   return (
     <div className="main-content">
-      <section className="about-me">
+      <section className="about-me" ref={aboutMeRef}>
         <div className="about-header">
-          <div className="about-image"></div>
+          <div className="about-image">
+            <i className="fas fa-user fa-5x"></i>
+          </div>
           <div className="about-details">
-            <h1>About Me</h1>
-            <p>Karthik Nambiar • Mumbai, India</p>
-            <p>Computer Engineering • Data Science Enthusiast</p>
-            <p>Creative problem solver passionate about technology and innovation.</p>
+            <h1>Karthik Nambiar</h1>
+            <p>Mumbai, India</p>
+            <p>B Tech in Computer Engineering</p>
+            <p>Frontend Developer • UI/UX Designer • Data Scientist</p>
           </div>
         </div>
       </section>
 
-      <section className="education">
-        <h2>Education</h2>
-        <div className="tour-dates">
-          <div className="tour-item">
-            <div className="tour-date">June 2024 - Present</div>
-            <div className="tour-info">
-              <h3>Ramrao Adik Institute of Technology</h3>
-              <p>B.Tech in Computer Engineering (Major: Data Science), CGPA: 9.42/10</p>
-              <p>Navi Mumbai, India</p>
+      <section className="education-leadership" ref={educationRef}>
+        <div className="book-view">
+          <div className="book-left">
+            <h2>Education</h2>
+  <div className="education-list">
+              <div className="education-item">
+                <div className="education-date">2024</div>
+                <div className="education-info">
+                  <h3>Ramrao Adik Institute of Technology</h3>
+                  <p>B.Tech in Computer Engineering (Major: Data Science) • CGPA: 9.42/10</p>
+                </div>
+              </div>
+              <div className="education-item">
+                <div className="education-date">2021</div>
+                <div className="education-info">
+                  <h3>Pace Junior Science College</h3>
+                  <p>12th Grade • Percentage: 90%</p>
+                </div>
+              </div>
+              <div className="education-item">
+                <div className="education-date">2019</div>
+                <div className="education-info">
+                  <h3>Bunt Sanghas S M Shetty High School</h3>
+                  <p>10th Grade • Percentage: 82.40%</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="tour-item">
-            <div className="tour-date">May 2019 - July 2021</div>
-            <div className="tour-info">
-              <h3>Pace Junior Science College</h3>
-              <p>12th Grade, Percentage: 90%</p>
-              <p>IIT Powai, India</p>
-            </div>
-          </div>
-          <div className="tour-item">
-            <div className="tour-date">May 2014 - April 2019</div>
-            <div className="tour-info">
-              <h3>Bunt Sanghas S M Shetty High School</h3>
-              <p>10th Grade, Percentage: 82.40%</p>
-              <p>Powai, India</p>
+          <div className="book-right">
+            <h2>Leadership</h2>
+            <div className="leadership-list">
+              <div className="leadership-item">
+                <div className="leadership-date">2022</div> {/* Updated to 2022 */}
+                <div className="leadership-info">
+                  <h3>CSI-RAIT</h3>
+                  <p>Technical Team • Navi Mumbai, India</p>
+                  <p>June 2022 – February 2023</p>
+                  <p>Managed essential tasks including handling workshops and events in college.</p>
+                </div>
+              </div>
+              <div className="leadership-item">
+                <div className="leadership-date">2021</div>
+                <div className="leadership-info">
+                  <h3>ISA-RAIT</h3>
+                  <p>Event Head • Navi Mumbai, India</p>
+                  <p>June 2021 – December 2021</p>
+                  <p>Managed an Educational event for Techfest 2021 which was awarded the most creative event of Techfest 2021.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="experience">
-        <h2>Experience</h2>
+      <section className="experience" ref={experienceRef}>
+        <h2 className="section-heading">Experience</h2>
         <div className="grid">
           <PlaylistCard
             title="Immensphere"
@@ -81,8 +107,8 @@ function MainContent() {
         </div>
       </section>
 
-      <section className="projects">
-        <h2>Projects</h2>
+      <section className="projects" ref={projectsRef}>
+        <h2 className="section-heading">Projects</h2>
         <div className="grid">
           <PlaylistCard
             title="DeTOUR Website"
@@ -108,8 +134,8 @@ function MainContent() {
         </div>
       </section>
 
-      <section className="certifications">
-        <h2>Certifications</h2>
+      <section className="certifications" ref={certificationsRef}>
+        <h2 className="section-heading">Certifications</h2>
         <div className="grid">
           <PlaylistCard
             title="Harvard Business School"
