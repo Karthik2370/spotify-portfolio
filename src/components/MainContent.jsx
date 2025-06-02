@@ -26,7 +26,7 @@ function MainContent({ aboutMeRef, educationRef, experienceRef, projectsRef, cer
       id={item.id}
       title={item.title}
       description={item.description}
-      details={item.details}
+      techStack={item.techStack}
       isExpanded={expandedSection === item.id}
       onToggle={() => toggleSection(item.id)}
       isProject={false}

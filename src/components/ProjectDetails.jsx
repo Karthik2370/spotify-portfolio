@@ -6,7 +6,10 @@ import '../styles/ProjectDetails.css';
 function ProjectDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const project = projectData.find(p => p.id === id);
+  const currentIndex = projectData.findIndex(p => p.id === id);
+  const project = projectData[currentIndex];
+  const nextProject = projectData[(currentIndex + 1) % projectData.length];
+  const prevProject = projectData[(currentIndex - 1 + projectData.length) % projectData.length];
 
   if (!project) {
     return (
@@ -20,16 +23,34 @@ function ProjectDetails() {
   return (
     <div className="project-details">
       <div className="project-header">
-        <button className="back-button" onClick={() => navigate('/')}>
-          <i className="fas fa-arrow-left"></i> Back
-        </button>
-        <h1>{project.title}</h1>
-        <p className="project-date">{project.description}</p>
+        <div className="project-navigation">
+          {prevProject && (
+            <button 
+              className="prev-project-button" 
+              onClick={() => navigate(`/project/${prevProject.id}`)}
+              aria-label={`View ${prevProject.title}`}
+            >
+              <i className="fas fa-chevron-left"></i>
+              <span>{prevProject.title}</span>
+            </button>
+          )}
+          <h1>{project.title}</h1>
+          {nextProject && (
+            <button 
+              className="next-project-button" 
+              onClick={() => navigate(`/project/${nextProject.id}`)}
+              aria-label={`View ${nextProject.title}`}
+            >
+              <span>{nextProject.title}</span>
+              <i className="fas fa-chevron-right"></i>
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="project-content">
         <div className="project-image">
-          <img src={project.imageUrl} alt={project.title} />
+          <div className="project-date-overlay">{project.description}</div>
         </div>
 
         <div className="project-info">
@@ -44,13 +65,13 @@ function ProjectDetails() {
           </div>
 
           <div className="project-links">
-            {project.githubLink && (
+            {project.githubLink && project.githubLink !== '#' && (
               <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="github-link">
                 <i className="fab fa-github"></i> View on GitHub
               </a>
             )}
-            {project.hostedLink && (
-              <a href={project.hostedLink} target="_blank" rel="noopener noreferrer" className="live-link">
+            {project.hostedLink && project.hostedLink !== '#' && (
+              <a href={`https://${project.hostedLink}`} target="_blank" rel="noopener noreferrer" className="live-link">
                 <i className="fas fa-external-link-alt"></i> Live Demo
               </a>
             )}
