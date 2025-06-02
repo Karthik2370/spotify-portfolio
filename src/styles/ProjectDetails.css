@@ -1,0 +1,189 @@
+/* src/styles/ProjectDetails.css */
+.project-details {
+  margin-left: 220px;
+  padding: 2rem;
+  max-width: 1200px;
+  color: white;
+  min-height: 100vh;
+  background: #000000;
+}
+
+.project-header {
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #1DB954;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  color: #1ed760;
+}
+
+.project-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-date {
+  color: #b3b3b3;
+  font-size: 1.1rem;
+}
+
+.project-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-info p {
+  line-height: 1.6;
+  color: #b3b3b3;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-item {
+  background-color: #282828;
+  color: #1DB954;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.github-link,
+.live-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.github-link {
+  background-color: #282828;
+  color: white;
+}
+
+.live-link {
+  background-color: #1DB954;
+  color: black;
+}
+
+.github-link:hover {
+  background-color: #383838;
+}
+
+.live-link:hover {
+  background-color: #1ed760;
+}
+
+.project-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+  margin-left: 220px;
+}
+
+.project-not-found h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-not-found button {
+  background-color: #1DB954;
+  color: black;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.project-not-found button:hover {
+  background-color: #1ed760;
+}
+
+@media (max-width: 768px) {
+  .project-details {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .project-content {
+    grid-template-columns: 1fr;
+  }
+
+  .project-header h1 {
+    font-size: 2rem;
+  }
+
+  .project-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-not-found {
+    margin-left: 0;
+  }
+} 

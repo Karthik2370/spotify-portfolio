@@ -1,0 +1,90 @@
+/* src/styles/Carousel.css */
+.carousel-section {
+  margin-bottom: 15px;
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.carousel-content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+}
+
+.carousel-items {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.carousel-item {
+  flex: 0 0 calc(33.333% - 20px);
+  min-width: 250px;
+}
+
+.carousel-arrow {
+  background: #1DB954;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 18px;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+  background: #1ed760;
+  transform: scale(1.1);
+}
+
+.carousel-arrow:active {
+  transform: scale(0.95);
+}
+
+.carousel-arrow.left {
+  margin-right: 20px;
+}
+
+.carousel-arrow.right {
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .carousel-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .carousel-items {
+    gap: 20px;
+  }
+
+  .carousel-item {
+    flex: 0 0 calc(33.333% - 14px);
+    min-width: 200px;
+  }
+} 

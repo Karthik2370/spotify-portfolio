@@ -6,8 +6,12 @@
   position: relative;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  border: none; /* Removed green border */
+  border: none;
   width: 200px; /* Fixed width for consistency */
+  height: fit-content; /* Allow height to adjust based on content */
+  min-height: 200px; /* Minimum height when collapsed */
+  display: flex;
+  flex-direction: column;
 }
 
 .playlist-card:hover {
@@ -21,6 +25,7 @@
   border-radius: 6px;
   position: relative;
   margin-bottom: 10px;
+  flex-shrink: 0; /* Prevent image from shrinking */
 }
 
 .play-button {
@@ -36,6 +41,7 @@
   justify-content: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   cursor: pointer;
+  z-index: 1; /* Ensure button stays above other elements */
 }
 
 .play-button i {
@@ -48,12 +54,14 @@
   font-weight: 700;
   color: white;
   margin: 10px 0 5px;
+  flex-shrink: 0; /* Prevent title from shrinking */
 }
 
 .description {
   font-size: 13px;
   color: white;
   margin-bottom: 10px;
+  flex-shrink: 0; /* Prevent description from shrinking */
 }
 
 .playlist-card ul {
@@ -61,6 +69,8 @@
   padding: 0;
   font-size: 12px;
   color: white;
+  margin: 0;
+  flex-grow: 1; /* Allow list to grow when expanded */
 }
 
 .playlist-card li {
@@ -71,6 +81,7 @@
   .playlist-card {
     padding: 12px;
     width: 180px;
+    min-height: 180px; /* Smaller minimum height for mobile */
   }
 
   .card-image {

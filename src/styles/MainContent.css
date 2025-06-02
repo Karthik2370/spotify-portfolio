@@ -1,11 +1,14 @@
 /* src/styles/MainContent.css */
 .main-content {
   margin-left: 220px;
-  padding: 20px 30px 80px 30px; /* Added padding-bottom to account for the widget */
+  padding: 20px 30px 0 30px;
   flex: 1;
   overflow-y: auto;
   background: #000000;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -250,4 +253,89 @@ section {
   .section-heading::after {
     right: 10%;
   }
+}
+
+.footer {
+  margin-top: 4rem;
+  padding: 0.5rem 0;
+  background-color: #121212;
+  color: #b3b3b3;
+  text-align: center;
+  border-top: 1px solid #282828;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.social-links {
+  margin-bottom: 0.5rem;
+}
+
+.social-links a {
+  color: #b3b3b3;
+  font-size: 1.2rem;
+  margin: 0 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #1DB954;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Add this to ensure the last section doesn't have extra margin */
+section:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Add this to ensure proper spacing */
+.certifications {
+  margin-bottom: 0;
+}
+
+.resume-section {
+  margin-bottom: 2rem;
+}
+
+.resume-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.resume-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: #1DB954;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.resume-button:hover {
+  background-color: #1ed760;
+}
+
+.resume-button i {
+  font-size: 1.2rem;
+}
+
+/* Carousel Sections */
+.experience,
+.projects,
+.certifications {
+  margin-bottom: 15px;  /* Reduced gap between carousel sections */
+}
+
+/* Keep the last section (certifications) with no bottom margin */
+.certifications {
+  margin-bottom: 0;
 }

@@ -134,6 +134,19 @@
   color: #1DB954;
 }
 
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.sidebar ul li:hover a {
+  color: #000000;
+}
+
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
