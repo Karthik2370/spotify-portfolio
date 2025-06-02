@@ -80,7 +80,7 @@ export const experienceData = [
 export const projectData = [
   {
     id: "weather-forecast",
-    title: "Weather Prediction Website",
+    title: "Weather Prediction",
     description: "Jul 2022",
     imageUrl: "/images/weather.jpg",
     longDescription: "A responsive weather forecasting website that provides real-time weather data and forecasts using the OpenWeather API. Features include current weather conditions, 5-day forecasts, and location-based weather updates.",
@@ -100,7 +100,7 @@ export const projectData = [
   },
   {
     id: "pneumonia",
-    title: "Pneumonia Detection Machine",
+    title: "Pneumonia Detection",
     description: "Jun 2023",
     imageUrl: "/images/pneumonia.jpg",
     longDescription: "A deep learning model that analyzes chest X-ray images to detect signs of pneumonia. Built using CNN layers and ResNet50 architecture, achieving high accuracy in classification. The model was trained on a dataset of chest X-rays.",
@@ -110,7 +110,7 @@ export const projectData = [
   },
   {
     id: "stock-prediction",
-    title: "Stock Prediction Model",
+    title: "Stock Prediction",
     description: "Jan 2024",
     imageUrl: "/images/stock.jpg",
     longDescription: "A machine learning model that analyzes news headlines to predict stock market trends. Uses Natural Language Processing and Random Forest Classifier to process text data and make predictions based on sentiment analysis.",
@@ -120,7 +120,7 @@ export const projectData = [
   },
   {
     id: "deepfake",
-    title: "Deepfake Detection Model",
+    title: "Deepfake Detection",
     description: "Jul 2024",
     imageUrl: "/images/deepfake.jpg",
     longDescription: "An AI model designed to detect deepfake videos and images of celebrities. Combines CNN for image analysis and Random Forest for classification, trained on a diverse dataset of authentic and manipulated media.",
