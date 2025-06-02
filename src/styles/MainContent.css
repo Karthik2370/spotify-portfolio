@@ -1,14 +1,17 @@
 /* src/styles/MainContent.css */
+.main-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #000000;
+  width: calc(100% - 220px); /* Account for sidebar width */
+  margin-left: 220px; /* Match sidebar width */
+}
+
 .main-content {
-  margin-left: 220px;
   padding: 20px 30px 0 30px;
   flex: 1;
   overflow-y: auto;
-  background: #000000;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -28,10 +31,10 @@ section {
 
 .about-header {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: flex-start;
+  gap: 2.5rem;
   background: linear-gradient(180deg, #1DB954 0%, #000000 100%);
-  padding: 20px;
+  padding: 2rem;
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
@@ -40,36 +43,66 @@ section {
   transform: scale(1.02);
 }
 
-.about-image {
-  width: 150px;
-  height: 150px;
-  background: linear-gradient(135deg, #1DB954 0%, #000000 100%);
-  border-radius: 8px;
+.profile-image-container {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 2rem;
+  flex-shrink: 0;
+  border: 3px solid #1DB954;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  background-color: #282828;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.profile-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #1DB954;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .about-details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
 }
 
 .about-details h1 {
-  font-size: 32px;
+  font-size: 2.5rem;
   font-weight: 700;
   color: white;
   margin: 0;
   line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .about-details p {
-  font-size: 14px;
+  font-size: 1rem;
   color: white;
   margin: 0;
   line-height: 1.5;
+  opacity: 0.9;
 }
 
 /* Education and Leadership Section (Book View) */
@@ -211,35 +244,102 @@ section {
 }
 
 @media (max-width: 768px) {
+  .main-content-wrapper {
+    width: 100%;
+    margin-left: 0;
+  }
+
   .main-content {
     margin-left: 0;
-    padding: 15px;
+    padding: 1rem;
+  }
+
+  .footer {
+    padding: 0.75rem;
+    width: 100%;
+  }
+
+  /* Remove all extra margins that might cause spacing */
+  section {
+    margin-bottom: 1rem;
+  }
+
+  section:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .certifications {
+    margin-bottom: 0;
+  }
+
+  .certifications .carousel {
+    margin-bottom: 0;
+  }
+
+  .certifications .carousel-container {
+    margin-bottom: 0;
   }
 
   .about-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
   }
 
-  .about-image {
-    width: 100px;
-    height: 100px;
+  .profile-image-container {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;  /* Center the container */
+    margin-bottom: 0.5rem;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about-details {
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0;
   }
 
   .about-details h1 {
-    font-size: 24px;
+    font-size: 2rem;
   }
 
   .about-details p {
-    font-size: 12px;
+    font-size: 0.95rem;
   }
 
   .education-leadership .book-view {
     flex-direction: column;
+    gap: 2rem;
   }
 
-  .leadership-list {
-    justify-content: flex-start;
+  .book-left, .book-right {
+    width: 100%;
+  }
+
+  .education-item, .leadership-item {
+    padding: 0.75rem;
+  }
+
+  .education-date, .leadership-date {
+    font-size: 0.9rem;
+    min-width: 60px;
+  }
+
+  .education-info h3, .leadership-info h3 {
+    font-size: 1rem;
+  }
+
+  .education-info p, .leadership-info p {
+    font-size: 0.85rem;
   }
 
   .grid {
@@ -253,17 +353,121 @@ section {
   .section-heading::after {
     right: 10%;
   }
+
+  /* Carousel Sections (Experience, Projects, Certifications) */
+  .carousel-section {
+    padding: 0.5rem 0;
+  }
+
+  .carousel-header {
+    padding: 0 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .carousel-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-container {
+    padding: 0 1rem;
+  }
+
+  /* Single card view for mobile */
+  .carousel-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow-x: visible;
+    padding: 0;
+  }
+
+  .carousel-item {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* Mobile navigation buttons */
+  .mobile-nav-buttons {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0;
+  }
+
+  .copyright p {
+    font-size: 0.8rem;
+  }
+
+  /* Ensure all content sections take up available space */
+  section {
+    flex: 0 0 auto;
+  }
+
+  /* Make the last section (certifications) take remaining space */
+  .certifications {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Ensure the carousel takes remaining space */
+  .certifications .carousel {
+    flex: 1;
+  }
+
+  .attributions {
+    font-size: 0.7rem;
+    margin-top: 0.4rem;
+  }
+}
+
+/* Additional breakpoint for very small screens */
+@media (max-width: 480px) {
+  .about-header {
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .profile-image-container {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-details h1 {
+    font-size: 1.75rem;
+  }
+
+  .about-details p {
+    font-size: 0.9rem;
+  }
+
+  .carousel-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .education-date, .leadership-date {
+    font-size: 0.8rem;
+    min-width: 50px;
+  }
+
+  .education-info h3, .leadership-info h3 {
+    font-size: 0.9rem;
+  }
+
+  .education-info p, .leadership-info p {
+    font-size: 0.75rem;
+  }
 }
 
 .footer {
-  margin-top: 4rem;
-  padding: 0.5rem 0;
+  padding: 0.75rem 0;
   background-color: #121212;
   color: #b3b3b3;
   text-align: center;
   border-top: 1px solid #282828;
   width: 100%;
-  margin-bottom: 0;
+  flex-shrink: 0;
 }
 
 .social-links {
@@ -284,6 +488,27 @@ section {
 .copyright {
   font-size: 0.8rem;
   margin: 0;
+}
+
+.attributions {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #b3b3b3;
+}
+
+.attributions p {
+  margin: 0;
+}
+
+.attributions a {
+  color: #1DB954;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.attributions a:hover {
+  color: #1ed760;
+  text-decoration: underline;
 }
 
 /* Add this to ensure the last section doesn't have extra margin */
@@ -332,7 +557,7 @@ section:last-of-type {
 .experience,
 .projects,
 .certifications {
-  margin-bottom: 15px;  /* Reduced gap between carousel sections */
+  margin-bottom: 1rem;
 }
 
 /* Keep the last section (certifications) with no bottom margin */

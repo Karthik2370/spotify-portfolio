@@ -113,33 +113,77 @@
 
 @media (max-width: 768px) {
   .playlist-card {
-    padding: 12px;
-    width: 180px;
-    min-height: 180px; /* Smaller minimum height for mobile */
+    width: 100%;
+    min-height: 140px;
+    padding: 8px;
+    margin-bottom: 12px;
   }
 
   .card-image {
-    height: 120px;
-  }
-
-  .play-button {
-    width: 32px;
-    height: 32px;
-  }
-
-  .play-button i {
-    font-size: 14px;
+    height: 90px;
+    margin-bottom: 6px;
   }
 
   .playlist-card h3 {
-    font-size: 14px;
+    font-size: 0.95rem;
+    margin: 4px 0 2px;
   }
 
   .description {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+  }
+
+  .tech-tags {
+    max-height: 60px;
+    margin-top: 8px;
+    padding-top: 8px;
+    gap: 4px;
+  }
+
+  .tech-tag {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+  }
+
+  .play-button {
+    width: 28px;
+    height: 28px;
+    bottom: 6px;
+    right: 6px;
+  }
+
+  .play-button i {
     font-size: 12px;
   }
 
-  .playlist-card li {
-    font-size: 11px;
+  .date-overlay {
+    font-size: 0.8rem;
+    padding: 2px 4px;
+  }
+}
+
+/* Additional breakpoint for very small screens */
+@media (max-width: 480px) {
+  .playlist-card {
+    min-height: 120px;
+    padding: 6px;
+  }
+
+  .card-image {
+    height: 80px;
+  }
+
+  .playlist-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .description {
+    font-size: 0.75rem;
+  }
+
+  .tech-tag {
+    font-size: 0.65rem;
+    padding: 2px 4px;
   }
 }

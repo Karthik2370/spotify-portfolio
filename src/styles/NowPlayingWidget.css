@@ -76,12 +76,44 @@
   color: white;
 }
 
+.widget-close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #282828;
+  border: none;
+  color: #b3b3b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.widget-close:hover {
+  background-color: #404040;
+  color: white;
+  transform: scale(1.1);
+}
+
+.widget-close:active {
+  transform: scale(0.95);
+}
+
 @media (max-width: 768px) {
   .now-playing-widget {
     bottom: 15px;
     right: 15px;
     padding: 8px 12px;
     max-width: 200px;
+    margin-left: 220px; /* Account for sidebar width */
   }
 
   .widget-image {
@@ -95,5 +127,20 @@
 
   .widget-controls i {
     font-size: 12px;
+  }
+
+  .widget-close {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    top: -6px;
+    right: -6px;
+  }
+}
+
+/* Additional breakpoint for very small screens */
+@media (max-width: 480px) {
+  .now-playing-widget {
+    margin-left: 0; /* Remove margin on very small screens */
   }
 }
