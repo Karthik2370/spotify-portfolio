@@ -1,39 +1,38 @@
 // src/components/PlaylistCard.jsx
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import '../styles/PlaylistCard.css';
 
-function PlaylistCard({ title, description, details, isExpanded, onToggle }) {
+function PlaylistCard({ title, description, details, isExpanded, onToggle, isProject, id }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (isProject) {
+      // Navigate to project details page using the project ID
+      navigate(`/project/${id}`);
+    } else {
+      // Toggle expansion for non-project cards
+      onToggle();
+    }
+  };
+
   return (
-    <motion.div
-      className="playlist-card"
-      whileHover={{ scale: 1.05 }}
-      transition={{ type: 'spring', stiffness: 300 }}
-    >
+    <div className={`playlist-card ${isExpanded ? 'expanded' : ''}`}>
       <div className="card-image">
-        <motion.div
-          className="play-button"
-          onClick={onToggle}
-          whileHover={{ scale: 1.2 }}
-          transition={{ type: 'spring', stiffness: 300 }}
-        >
-          <i className={isExpanded ? 'fas fa-pause' : 'fas fa-play'}></i>
-        </motion.div>
+        <button className="play-button" onClick={handleClick}>
+          <i className={`fas ${isExpanded ? 'fa-pause' : 'fa-play'}`}></i>
+        </button>
       </div>
       <h3>{title}</h3>
       <p className="description">{description}</p>
-      {isExpanded && details.length > 0 && (
-        <motion.ul
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: 'auto', opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
+      {!isProject && isExpanded && (
+        <ul>
           {details.map((detail, index) => (
             <li key={index}>{detail}</li>
           ))}
-        </motion.ul>
+        </ul>
       )}
-    </motion.div>
+    </div>
   );
 }
 

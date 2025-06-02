@@ -8,24 +8,21 @@ function Sidebar({ aboutMeRef, educationRef, experienceRef, projectsRef, certifi
   const location = useLocation();
 
   const handleHomeClick = () => {
-    navigate('/'); // Navigate to the main page
+    navigate('/');
   };
 
   const handleSearchClick = () => {
-    // Placeholder for future search functionality
     console.log('Search clicked - functionality to be implemented');
   };
 
   const handleSkillsClick = () => {
-    navigate('/skills'); // Navigate to the Skills page
+    navigate('/skills');
   };
 
   const handleScrollClick = (ref) => {
     if (location.pathname !== '/') {
-      // If not on the main page, navigate to the main page first
       navigate('/', { state: { scrollTo: ref } });
     } else {
-      // If already on the main page, just scroll
       ref.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -72,6 +69,18 @@ function Sidebar({ aboutMeRef, educationRef, experienceRef, projectsRef, certifi
             <i className="fas fa-tools"></i>
             <span>Skills</span>
           </li>
+          <li>
+            <a 
+              href="/resume.pdf" 
+              download="Karthik_Resume.pdf"
+              className="sidebar-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fas fa-file-alt"></i>
+              <span>Resume</span>
+            </a>
+          </li>
         </ul>
       </div>
       <div className="connect">
@@ -79,17 +88,17 @@ function Sidebar({ aboutMeRef, educationRef, experienceRef, projectsRef, certifi
         <ul>
           <li>
             <i className="fab fa-linkedin"></i>
-            <a href="https://linkedin.com/in/karthik-nambiar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/karthik-nambiar-2ba03b216/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </li>
           <li>
             <i className="fab fa-github"></i>
             <a href="https://github.com/Karthik2370" target="_blank" rel="noopener noreferrer">GitHub</a>
           </li>
+          <li>
+            <i className="fas fa-envelope"></i>
+            <a href="mailto:ramachandrankarthik7@gmail.com" className="sidebar-link">Contact Me</a>
+          </li>
         </ul>
-      </div>
-      <div className="profile">
-        <div className="profile-image"></div>
-        <span>Karthik Nambiar</span>
       </div>
     </div>
   );
