@@ -20,31 +20,47 @@ function ProjectDetails() {
     );
   }
 
+  const handlePrevProject = () => {
+    navigate(`/project/${prevProject.id}`);
+  };
+
+  const handleNextProject = () => {
+    navigate(`/project/${nextProject.id}`);
+  };
+
   return (
     <div className="project-details">
       <div className="project-header">
-        <div className="project-navigation">
-          {prevProject && (
-            <button 
-              className="prev-project-button" 
-              onClick={() => navigate(`/project/${prevProject.id}`)}
-              aria-label={`View ${prevProject.title}`}
-            >
-              <i className="fas fa-chevron-left"></i>
-              <span>{prevProject.title}</span>
-            </button>
-          )}
+        {/* Desktop Navigation */}
+        <div className="desktop-navigation">
+          <button className="desktop-nav-button" onClick={handlePrevProject}>
+            <i className="fas fa-arrow-left"></i>
+            <span>{prevProject?.title || 'Previous Project'}</span>
+          </button>
           <h1>{project.title}</h1>
-          {nextProject && (
-            <button 
-              className="next-project-button" 
-              onClick={() => navigate(`/project/${nextProject.id}`)}
-              aria-label={`View ${nextProject.title}`}
-            >
-              <span>{nextProject.title}</span>
-              <i className="fas fa-chevron-right"></i>
-            </button>
-          )}
+          <button className="desktop-nav-button" onClick={handleNextProject}>
+            <span>{nextProject?.title || 'Next Project'}</span>
+            <i className="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="mobile-navigation">
+          <h1>{project.title}</h1>
+          <div className="mobile-nav-buttons">
+            {prevProject && (
+              <button className="mobile-nav-button" onClick={handlePrevProject}>
+                <i className="fas fa-arrow-left"></i>
+                <span>{prevProject.title}</span>
+              </button>
+            )}
+            {nextProject && (
+              <button className="mobile-nav-button" onClick={handleNextProject}>
+                <span>{nextProject.title}</span>
+                <i className="fas fa-arrow-right"></i>
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
