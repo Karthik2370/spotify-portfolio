@@ -175,7 +175,7 @@ export const projectData = [
     imageUrl: "/images/bot.jpg",
     longDescription: "An automated login system that securely stores and manages credentials for frequently visited websites. Uses Selenium for browser automation and features a Tkinter GUI for user interaction and credential management.",
     techStack: ["Python", "Selenium", "Chrome Driver", "Tkinter"],
-    githubLink: "#",
+    githubLink: "https://github.com/Karthik2370/Auto-Login-Bot",
     hostedLink: "#"
   },
   {
