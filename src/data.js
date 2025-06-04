@@ -115,7 +115,7 @@ export const projectData = [
     imageUrl: "/images/stock.jpg",
     longDescription: "A machine learning model that analyzes news headlines to predict stock market trends. Uses Natural Language Processing and Random Forest Classifier to process text data and make predictions based on sentiment analysis.",
     techStack: ["Python", "BoW", "Google Colab"],
-    githubLink: "#",
+    githubLink: "https://github.com/Karthik2370/Stock-Prediction-model",
     hostedLink: "#"
   },
   {
