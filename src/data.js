@@ -11,7 +11,7 @@ export const educationData = [
   {
     year: "2024",
     institution: "Ramrao Adik Institute of Technology",
-    details: "B.Tech in Computer Engineering (Major: Data Science) • CGPA: 9.42/10"
+    details: "B.Tech in Computer Engineering (Major: Data Science) • CGPA: 9.53/10"
   },
   {
     year: "2021",
