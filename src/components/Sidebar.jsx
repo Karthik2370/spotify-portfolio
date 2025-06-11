@@ -1,5 +1,5 @@
 // src/components/Sidebar.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Sidebar.css';
 
@@ -7,6 +7,65 @@ function Sidebar({ aboutMeRef, educationRef, experienceRef, projectsRef, certifi
   const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(null);
+
+  // Reset active section when location changes
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection(null);
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Only handle scroll events on the home page
+      if (location.pathname !== '/') return;
+
+      const sections = [
+        { ref: aboutMeRef, id: 'about' },
+        { ref: educationRef, id: 'education' },
+        { ref: experienceRef, id: 'experience' },
+        { ref: projectsRef, id: 'projects' },
+        { ref: certificationsRef, id: 'certifications' }
+      ];
+
+      // Get the current scroll position and window height
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Check if we're near the bottom of the page (within 150px)
+      const isNearBottom = documentHeight - scrollPosition < 150;
+
+      // Handle certifications section
+      if (certificationsRef.current) {
+        const rect = certificationsRef.current.getBoundingClientRect();
+        // If certifications section is in view or we're near bottom
+        if (rect.top <= 150 || isNearBottom) {
+          setActiveSection('certifications');
+          return;
+        }
+      }
+
+      // Handle other sections
+      const currentSection = sections.find(section => {
+        if (section.ref.current && section.id !== 'certifications') {
+          const rect = section.ref.current.getBoundingClientRect();
+          return rect.top <= 150 && rect.bottom >= 150;
+        }
+        return false;
+      });
+
+      if (currentSection) {
+        setActiveSection(currentSection.id);
+      }
+    };
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [aboutMeRef, educationRef, experienceRef, projectsRef, certificationsRef, location.pathname]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -105,7 +164,7 @@ function Sidebar({ aboutMeRef, educationRef, experienceRef, projectsRef, certifi
       <div className="sidebar">
         <div className="navigation">
           <ul>
-            <li onClick={handleHomeClick}>
+            <li onClick={handleHomeClick} className={location.pathname === '/' && !activeSection ? 'active' : ''}>
               <i className="fas fa-home"></i>
               <span>Home</span>
             </li>
@@ -119,27 +178,42 @@ function Sidebar({ aboutMeRef, educationRef, experienceRef, projectsRef, certifi
         <div className="library">
           <h3>Portfolio</h3>
           <ul>
-            <li onClick={() => handleScrollClick(aboutMeRef)}>
+            <li 
+              onClick={() => handleScrollClick(aboutMeRef)}
+              className={activeSection === 'about' ? 'active' : ''}
+            >
               <i className="fas fa-address-book"></i>
               <span>About Me</span>
             </li>
-            <li onClick={() => handleScrollClick(educationRef)}>
+            <li 
+              onClick={() => handleScrollClick(educationRef)}
+              className={activeSection === 'education' ? 'active' : ''}
+            >
               <i className="fas fa-school"></i>
               <span>Education</span>
             </li>
-            <li onClick={() => handleScrollClick(experienceRef)}>
+            <li 
+              onClick={() => handleScrollClick(experienceRef)}
+              className={activeSection === 'experience' ? 'active' : ''}
+            >
               <i className="fas fa-suitcase"></i>
               <span>Experience</span>
             </li>
-            <li onClick={() => handleScrollClick(projectsRef)}>
+            <li 
+              onClick={() => handleScrollClick(projectsRef)}
+              className={activeSection === 'projects' ? 'active' : ''}
+            >
               <i className="fas fa-code"></i>
               <span>Projects</span>
             </li>
-            <li onClick={() => handleScrollClick(certificationsRef)}>
+            <li 
+              onClick={() => handleScrollClick(certificationsRef)}
+              className={activeSection === 'certifications' ? 'active' : ''}
+            >
               <i className="fas fa-award"></i>
               <span>Certifications</span>
             </li>
-            <li onClick={handleSkillsClick}>
+            <li onClick={handleSkillsClick} className={location.pathname === '/skills' ? 'active' : ''}>
               <i className="fas fa-tools"></i>
               <span>Skills</span>
             </li>
