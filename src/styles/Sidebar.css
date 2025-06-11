@@ -54,6 +54,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 4px;
+  position: relative;
 }
 
 .navigation li:hover {
@@ -70,6 +71,17 @@
 }
 
 .navigation li:hover i {
+  color: #000000;
+}
+
+.navigation li.active {
+  background-color: #1DB954;
+  color: #000000;
+  transform: translateX(5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.navigation li.active i {
   color: #000000;
 }
 
@@ -103,6 +115,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 4px;
+  position: relative;
 }
 
 .library li:hover,
@@ -122,6 +135,19 @@
 
 .library li:hover i,
 .connect li:hover i {
+  color: #000000;
+}
+
+.library li.active,
+.connect li.active {
+  background-color: #1DB954;
+  color: #000000;
+  transform: translateX(5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.library li.active i,
+.connect li.active i {
   color: #000000;
 }
 
